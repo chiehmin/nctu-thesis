@@ -1,0 +1,132 @@
+\documentclass[12pt,a4paper,oneside]{book}
+
+% border setting
+\usepackage[ top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm ]{ geometry }
+
+% The default for LaTeX is to have no indent after sectional headings, like \chapter and \section. ()
+\usepackage{indentfirst}
+
+% http://tex.stackexchange.com/questions/28333/continuous-v-per-chapter-section-numbering-of-figures-tables-and-other-docume
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+% This prevents placing floats before a section
+\usepackage[section]{placeins}
+\let\Oldsubsection\subsection
+\renewcommand{\subsection}{\FloatBarrier\Oldsubsection}
+
+% source code hightlighting
+\usepackage{listings}
+\lstset{
+  numbers=left,
+  stepnumber=1,
+  firstnumber=1,
+  captionpos=b,
+  tabsize=2,
+  basicstyle=\small,
+  numberfirstline=true
+}
+
+% setting the page number to footer
+\usepackage{fancyhdr}
+\fancyhf{}
+\cfoot{\thepage}
+\pagestyle{fancy}
+% no header and footer bar
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% setup bibliography
+\usepackage[sorting=none,backend=bibtex]{biblatex}
+\addbibresource{reference.bib}
+
+% line height setting
+\linespread{1.5}
+\usepackage{setspace}
+
+% Graphics settings
+\usepackage{graphicx}
+\graphicspath{ {./figures/} }
+
+\usepackage{background}
+\newcommand\DeactivateBG{\backgroundsetup{contents={}}}
+\newcommand\ActivateBG{
+  \backgroundsetup{
+      contents={\includegraphics[]{logo.jpg}},
+      scale=1,
+      opacity=0.4,
+      angle=0
+  }
+}
+
+
+
+% do not place figure at the middle of a empty page
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+
+% Chinese typesetting
+\usepackage{xeCJK}
+%\setCJKmainfont{SourceHanSansTW-Light.otf}
+\setCJKmainfont[
+  BoldFont={SourceHanSansTW-Normal.otf},
+  ItalicFont={SourceHanSansTW-Light.otf}
+]{SourceHanSansTW-Light.otf}
+\newcommand{\myHuge}[1]{\fontsize{40}{50} #1}
+
+\newcommand{\chineseTitle}{中文題目}
+\newcommand{\englishTitle}{英文題目}
+
+\newcommand{\studentCnName}{王大名}
+\newcommand{\studentEnName}{Da-Min Wang}
+\newcommand{\advisorCnName}{吳小松}
+\newcommand{\advisorEnName}{Xiao-Sung Wu}
+
+\usepackage{pdfpages}
+
+\begin{document}
+
+\pagenumbering{gobble} % disabling page numbering
+
+\ActivateBG
+
+\input{cover1.tex}
+\input{cover2.tex}
+
+\DeactivateBG
+
+% 放審定書和授權書
+% \includepdf[pages={1-2}]{auth.pdf}
+
+\ActivateBG
+
+\input{abstract_chinese.tex}
+\input{abstract_english.tex}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\chapter{Introduction} \pagenumbering{arabic} % enabling page numbering
+
+NCTU latex thesis\cite{thesis}.
+
+\chapter{Background}
+
+\chapter{Design}
+  
+\chapter{Implementation}
+
+\chapter{Evaluation}
+
+\chapter{Related Work}
+
+\chapter{Conclusion}
+
+\newpage
+
+\printbibliography[title={References}]
+
+\end{document}
