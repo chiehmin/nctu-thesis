@@ -7,3 +7,7 @@
 請使用 XeLatex 作為 latex engine 以便顯示中文字體。
 
 作者是使用 [Overleaf](https://www.overleaf.com/) 線上 latex 編輯器編輯論文，使用時記得在設定中將 latex engine 設定為 XeLatex 。
+
+## 範例
+
+[sample.pdf](sample.pdf)
