@@ -1,0 +1,9 @@
+thesis.pdf
+thesis-blx.bib
+*.aux
+*.lof
+*.log
+*.lot
+*.xml
+*.toc
+

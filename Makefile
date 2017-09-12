@@ -6,6 +6,9 @@ all: thesis.pdf
 
 thesis.pdf: $(SRC)
 	xelatex thesis.tex
+	bibtex  thesis.aux
+	xelatex thesis.tex
+	xelatex thesis.tex
 
 clean:
 	-rm thesis.pdf thesis-blx.bib *.aux *.lof *.log *.lot *.xml *.toc
